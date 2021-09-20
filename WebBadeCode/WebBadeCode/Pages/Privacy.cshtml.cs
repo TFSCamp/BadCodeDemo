@@ -4,7 +4,9 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace WebBadeCode.Pages
@@ -37,7 +39,7 @@ namespace WebBadeCode.Pages
                 //    {
                 //        while (reader.Read())
                 //        {
-                            
+
                 //        }
                 //    }
                 //    finally
@@ -47,6 +49,11 @@ namespace WebBadeCode.Pages
                 //    }
                 //}
             }
-        }
+
+            string text = "demo";
+
+            MD5 md5 = MD5.Create(text);
+
         }
     }
+}
