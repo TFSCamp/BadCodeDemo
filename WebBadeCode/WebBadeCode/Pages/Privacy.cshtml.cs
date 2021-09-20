@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace WebBadeCode.Pages
@@ -50,10 +51,25 @@ namespace WebBadeCode.Pages
                 //}
             }
 
-            string text = "demo";
+            Console.WriteLine("test");
+            
+        }
 
-            MD5 md5 = MD5.Create(text);
+        public static string GetMD5Hash(string TextToHash)
+        {
+            //Prüfen ob Daten übergeben wurden.
+            if ((TextToHash == null) || (TextToHash.Length == 0))
+            {
+                return string.Empty;
+            }
 
+            //MD5 Hash aus dem String berechnen. Dazu muss der string in ein Byte[]
+            //zerlegt werden. Danach muss das Resultat wieder zurück in ein string.
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] textToHash = Encoding.Default.GetBytes(TextToHash);
+            byte[] result = md5.ComputeHash(textToHash);
+
+            return System.BitConverter.ToString(result);
         }
     }
 }
