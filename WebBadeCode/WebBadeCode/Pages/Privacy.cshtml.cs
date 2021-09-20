@@ -25,30 +25,30 @@ namespace WebBadeCode.Pages
         {
             if (!string.IsNullOrEmpty(this.Request.Query["ID"]))
             {
-                //string queryString = "SELECT tPatCulIntPatIDPk, tPatSFirstname, tPatSName, tPatDBirthday  FROM  [dbo].[TPatientRaw] WHERE tPatSName = " + this.Request.Query["ID"].ToString();
-                //string connectionString = "Server=.\\PDATA_SQLEXPRESS;Database=;User Id=sa;Password=2BeChanged!;";
+                string queryString = "SELECT tPatCulIntPatIDPk, tPatSFirstname, tPatSName, tPatDBirthday  FROM  [dbo].[TPatientRaw] WHERE tPatSName = " + this.Request.Query["ID"].ToString();
+                string connectionString = "Server=.\\PDATA_SQLEXPRESS;Database=;User Id=sa;Password=2BeChanged!;";
 
-                //// new feature
+                // new feature
 
-                //using (SqlConnection connection = new SqlConnection(connectionString))
-                //{
-                //    SqlCommand command = new SqlCommand(queryString, connection);
-                //    //command.Parameters.AddWithValue("@tPatSName", "Your-Parm-Value");
-                //    connection.Open();
-                //    var reader = command.ExecuteReader();
-                //    try
-                //    {
-                //        while (reader.Read())
-                //        {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                   SqlCommand command = new SqlCommand(queryString, connection);
+                   //command.Parameters.AddWithValue("@tPatSName", "Your-Parm-Value");
+                   connection.Open();
+                   var reader = command.ExecuteReader();
+                   try
+                   {
+                       while (reader.Read())
+                       {
 
-                //        }
-                //    }
-                //    finally
-                //    {
-                //        // Always call Close when done reading.
-                //        reader.Close();
-                //    }
-                //}
+                       }
+                   }
+                   finally
+                   {
+                       // Always call Close when done reading.
+                       reader.Close();
+                   }
+                }
             }
 
             Console.WriteLine(GetMD5Hash("test"));
