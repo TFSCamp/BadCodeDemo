@@ -25,6 +25,8 @@ namespace WebBadeCode.Pages
                 string queryString = "SELECT tPatCulIntPatIDPk, tPatSFirstname, tPatSName, tPatDBirthday  FROM  [dbo].[TPatientRaw] WHERE tPatSName = " + this.Request.Query["ID"].ToString();
                 string connectionString = "Server=.\\PDATA_SQLEXPRESS;Database=;User Id=sa;Password=2BeChanged!;";
 
+                // new feature
+
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     SqlCommand command = new SqlCommand(queryString, connection);
